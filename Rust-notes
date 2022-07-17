@@ -1,0 +1,106 @@
+RUST NOTES----------------------------------------------------------------------------
+
+____CHAPTER ONE _______________________________________________________________________
+Getting Started
+
+Cargo has different commands to debug. compile, and test code
+
+cargo build will make an executable (binary) file at target/debug
+to execute this file, write ./target/debug/filename
+
+cargo run will both compile and execute (same process)--if nothing has changed, simply execute the binary again
+
+cargo check will quickly check to see if the code compiles, but does not create and executable
+
+As Cargo projects get bigger, these commands will probably become more useful
+	-> ability to quickly check if a project will compile, without performing a write to disk, is a powerful tool
+
+Similar process to C (compiled and then run, binaries can be executed on different systems)
+
+Cargo.toml (uses TOML config file format, very nice) contains info about dependencies, versions (similar to pom.xml in Maven projects)
+
+Use 'cargo check' to check your code, 'cargo build' when you're ready to run it
+
+Use cargo build --release to compile with optimizations (takes longer to compile)
+	-> makes executable in target/release
+
+____CHAPTER TWO _______________________________________________________________________
+Guessing Game Tutorial
+
+use std::io;		analogous to:	using namespace stdio in C
+
+String::new			creates a new String (rowable UTF-8 text)
+					String::new indicates "new" is a function that operates on
+					type String
+
+io::stdin()			stdin is a function that operates on type/library io in namespace std
+
+& indicates a reference--accessed at different points in the code
+- immutable by default, like variables
+- easy to use in Rust without understanding all the details of how they work
+- write &mut guess to make guess reference mutable
+
+.expect("failed to read line") used for error handling--what did we "expect" to happen?
+- this method returns a Result enum that can have multiple possible states
+- Ok or Err
+
+println!("You guessed: {}");
+
+let x = 5;
+let y = 10;
+println!("x = {} and y = {}", x, y);		-> x = 5 and y = 10
+
+
+Import the rand crate from the registry (copy of code from Crates.io)
+- put it under [dependencies]
+
+Cargo.lock locks the dependency at the version specified until you change it
+- even if the dependency is updated, the old version will be used
+- this ensures code does not break/deprecate in the future
+
+'cargo update' updates all the dependencies in the Cargo.toml and Cargo.lock files to the latest version
+
+use rand::Rng 	use the Rng trait (defines a family of methods) within the rand crate
+
+rand::thread_rng() 		number generated locally by the operating system
+
+.gen_range() 			called on the number generator, takes form 'start..=end'
+
+Hint: use 'cargo doc --open' to generate documentation locally for all the crates the project uses and open this documentation in the browser
+
+
+
+
+____CHAPTER THREE _______________________________________________________________________
+Common Programming Concepts
+
+Some keywords have no associated functionality, but are reserved for potential future changes (wtf)
+	-> Cannot be used as identifiers
+
+Variables are immutable by default
+let x = 5;
+	-> x is immutable, value can't be changed
+
+let mut x = 5;
+	-> x is mutable, value can be changed
+
+Constants are always immutable
+	-> must be declared with const, not let
+	-> cannot use mut keyword
+	-> can be declared in any scope (including global)
+
+The catch: constants can only be set to a CONSTANT expression, not the result of a computation that happens at runtime
+
+	ex:		const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
+	list of valid expressions:	https://doc.rust-lang.org/reference/const_eval.html
+
+Shadowing - declaring a variable with the same name as another in scope "shadows" the previous variable
+	-> the first variable is shadowed by the second
+
+We can use shadowing on an immutable variable to control when its value can be changed
+	-> define an inner scope with brackets and make a new let statement within
+	-> closing bracket ends the inner scope, and the value reverts
+	-> only a let statement can change the value of an immutable variable by shadowing its old value
+
+shadowing is effectively creating a new variable, which means we can use a different type with the same name
+
