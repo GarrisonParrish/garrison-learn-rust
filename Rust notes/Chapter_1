@@ -1,0 +1,25 @@
+RUST NOTES----------------------------------------------------------------------------
+
+____CHAPTER ONE _______________________________________________________________________
+Getting Started
+
+Cargo has different commands to debug. compile, and test code
+
+cargo build will make an executable (binary) file at target/debug
+to execute this file, write ./target/debug/filename
+
+cargo run will both compile and execute (same process)--if nothing has changed, simply execute the binary again
+
+cargo check will quickly check to see if the code compiles, but does not create and executable
+
+As Cargo projects get bigger, these commands will probably become more useful
+	-> ability to quickly check if a project will compile, without performing a write to disk, is a powerful tool
+
+Similar process to C (compiled and then run, binaries can be executed on different systems)
+
+Cargo.toml (uses TOML config file format, very nice) contains info about dependencies, versions (similar to pom.xml in Maven projects)
+
+Use 'cargo check' to check your code, 'cargo build' when you're ready to run it
+
+Use cargo build --release to compile with optimizations (takes longer to compile)
+	-> makes executable in target/release

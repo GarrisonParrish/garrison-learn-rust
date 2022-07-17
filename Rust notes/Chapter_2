@@ -1,0 +1,47 @@
+____CHAPTER TWO _______________________________________________________________________
+Guessing Game Tutorial
+
+use std::io;		analogous to:	using namespace stdio in C
+
+String::new			creates a new String (rowable UTF-8 text)
+					String::new indicates "new" is a function that operates on
+					type String
+
+io::stdin()			stdin is a function that operates on type/library io in namespace std
+
+& indicates a reference--accessed at different points in the code
+- immutable by default, like variables
+- easy to use in Rust without understanding all the details of how they work
+- write &mut guess to make guess reference mutable
+
+.expect("failed to read line") used for error handling--what did we "expect" to happen?
+- this method returns a Result enum that can have multiple possible states
+- Ok or Err
+
+println!("You guessed: {}");
+
+let x = 5;
+let y = 10;
+println!("x = {} and y = {}", x, y);		-> x = 5 and y = 10
+
+
+Import the rand crate from the registry (copy of code from Crates.io)
+- put it under [dependencies]
+
+Cargo.lock locks the dependency at the version specified until you change it
+- even if the dependency is updated, the old version will be used
+- this ensures code does not break/deprecate in the future
+
+'cargo update' updates all the dependencies in the Cargo.toml and Cargo.lock files to the latest version
+
+use rand::Rng 	use the Rng trait (defines a family of methods) within the rand crate
+
+rand::thread_rng() 		number generated locally by the operating system
+
+.gen_range() 			called on the number generator, takes form 'start..=end'
+
+Hint: use 'cargo doc --open' to generate documentation locally for all the crates the project uses and open this documentation in the browser
+
+
+
+
