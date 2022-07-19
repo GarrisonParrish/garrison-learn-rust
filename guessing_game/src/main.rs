@@ -19,6 +19,14 @@ fn main() {
         .expect("failed to read line");
     */
 
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+
+    println!("The secret number is: {secret_number}");
+
+    println!("Please enter your guess");
+
+    let mut guess = String::new();
+
     println!("You guessed: {guess}");
 
     match guess.cmp(&secret_number) {
@@ -28,5 +36,7 @@ fn main() {
 
         
     }
+
+    println!(match guess.cmp(&secret_number));
     
 }

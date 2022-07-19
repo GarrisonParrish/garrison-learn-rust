@@ -42,6 +42,11 @@ rand::thread_rng() 		number generated locally by the operating system
 
 Hint: use 'cargo doc --open' to generate documentation locally for all the crates the project uses and open this documentation in the browser
 
+match guess.cmp(&secret_number)		compare guess to secret_number
+
+use std::cmp::Ordering;		brings into scope the Ordering type (enum with values Less, Greater, Equal)
+
+Match expressions are made up of arms--each arm is a possible pattern and the code to be run if the argument matches this pattern
 
 
 
