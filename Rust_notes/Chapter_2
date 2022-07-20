@@ -48,5 +48,13 @@ use std::cmp::Ordering;		brings into scope the Ordering type (enum with values L
 
 Match expressions are made up of arms--each arm is a possible pattern and the code to be run if the argument matches this pattern
 
+Rust cannot compare a string and a number type
+- want to convert the String read from input to a real number type
+- can infer the type of the string, but needs them to be the same
+- need to trim any newlines from input before using .parse() to convert it to a number
+
+Pattern matching: use match expression to check for Err(_), where _ is a catchall
+
+if Err(_) matches, then arm tells program to continue to next loop
 
 

@@ -4,6 +4,8 @@ Common Programming Concepts
 Some keywords have no associated functionality, but are reserved for potential future changes (wtf)
 	-> Cannot be used as identifiers
 
+Variables and Immutability-----------
+
 Variables are immutable by default
 let x = 5;
 	-> x is immutable, value can't be changed
@@ -31,3 +33,6 @@ We can use shadowing on an immutable variable to control when its value can be c
 
 shadowing is effectively creating a new variable, which means we can use a different type with the same name
 
+Data Types---------
+
+Two subsets: scalar and compound
